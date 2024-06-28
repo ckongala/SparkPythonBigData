@@ -1,0 +1,70 @@
+Section 1: Spark Basics and the RDD Interface:
+	
+	
+	Why and What's new in Spark3:
+	
+		Course Content: 
+			This course covers features from Spark 1, 2, and 3. The older technologies are still valid and necessary to understand Spark's evolution. 
+			We’ll start with RDDs from Spark 1, move to DataFrames and Datasets from Spark 2, and then cover Spark 3 features.
+		Deprecations:
+			Old MLlib: The RDD-based machine learning library is deprecated. Use the DataFrame-based MLlib instead.
+			Python 2: No longer supported. Use Python 3.
+		New Features:
+			Speed: Spark 3 is much faster than Spark 2, up to 17 times in some benchmarks, with improvements like adaptive execution and dynamic partition pruning.
+			GPU Support: Spark 3 can utilize GPU instances for faster processing, which benefits deep learning projects using add-ons like TensorFlow on Spark.
+			Kubernetes Integration: Improved support with dynamic scaling and GPU instances.
+			Binary File Support: You can now load raw binary data into a DataFrame row, useful for processing binary data like images.
+			Spark Graph: Replaces GraphX for graph processing, using the Cypher query language for more effective graph data management.
+			ACID Support in Data Lakes: Delta Lake enables ACID transactions in data lakes, providing strong database consistency.
+			
+	Introduction Spark:
+	
+		What is Spark?: 
+			Apache Spark: A fast, general engine for large-scale data processing.
+			Purpose: Processes massive data sets by distributing tasks across a cluster of computers.
+			Usability: Python, Java, or Scala scripts that run like regular programs but can scale across multiple machines.
+		Key Features:
+			Cluster Managers: Runs on its own cluster manager, Hadoop's YARN, or cloud services like Amazon EMR.
+			Fault Tolerance: Recovers from failures without restarting jobs.
+			Horizontal Scalability: Distributes data and processing across multiple nodes and CPUs.
+		Why Spark Over MapReduce?:
+			Speed: Up to 100 times faster than Hadoop MapReduce in some cases, typically 2-3 times faster.
+			Efficiency: Uses a Directed Acyclic Graph (DAG) engine for optimized query execution.
+		Who Uses Spark?:
+			Adopters: Amazon, eBay, NASA, Yahoo, and many others.
+			Advantages: Easy to learn, supports Python, Java, and Scala, and is versatile for various data processing tasks.
+		Components of Spark:
+			Spark Core: Main engine for processing Resilient Distributed Datasets (RDDs).
+			Spark Streaming: Processes real-time data streams.
+			Spark SQL: Allows SQL queries on structured data.
+			MLlib: Machine learning library with built-in algorithms.
+			GraphX: For graph processing and analysis
+	
+	Resilient Distributed Dataset(RDD):
+		
+		What is an RDD?
+			Core of Spark: The foundation of all Spark operations.
+			Distributed: Data is spread across multiple computers.
+			Resilient: Handles failures gracefully, redistributing tasks if a node fails.
+			Abstract Data Representation: Represents a large dataset.
+		Creating RDDs
+			Spark Context (sc): The starting point for creating RDDs.
+			Methods to Create RDDs:
+				sc.parallelize: Creates an RDD from a hardcoded list (not practical for large data).
+				sc.textFile: Reads a text file to create an RDD (can handle large datasets from local files, S3, HDFS, etc.).
+		Transformations on RDDs:
+			map: Applies a function to each element, transforming it (e.g., squaring numbers).
+			flatMap: Similar to map, but can return multiple results for each input.
+			filter: Removes elements that don't meet a condition (e.g., filtering error logs).
+			Other Operations: distinct, sample, union, intersection, subtract, cartesian.
+		Actions on RDDs:
+			collect: Retrieves all elements.
+			count: Counts the number of elements.
+			take: Takes a sample of elements.
+			reduce: Combines elements using a function (e.g., summing values).
+		Key Points:
+			Laziness: Transformations are not executed until an action is called.
+			Optimization: Spark optimizes the execution plan when an action is invoked, making it fast.
+		Summary:
+			They allow you to handle large, distributed datasets efficiently, with robust failure recovery, all while feeling like you're working with a simple, single machine program. 
+
